@@ -1,0 +1,6 @@
+# 构建基础镜像
+docker build -f .\DockerFile -t online-education:v1.0.0.0 . 
+
+# 启动镜像
+# docker run -d --name < project name>  -p 8000:80 <image-name>:<image-tag>
+docker run 
