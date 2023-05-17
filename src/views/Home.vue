@@ -1,5 +1,7 @@
 <template>
   <el-container>
+ 
+    <!-- 头部 -->
     <el-header>
       <div>
         <table>
@@ -19,6 +21,7 @@
       </div>
     </el-header>
 
+    <!-- 中部banner -->
     <el-main>
       <div>
         <div style="border-radius: 10px; background: yellow">
@@ -31,6 +34,8 @@
         </div>
       </div>
     </el-main>
+
+    <!-- 中部2 广告位 -->
     <el-main>
       <div>
         <el-card style="border-radius: 10px; background: yellow">
@@ -39,6 +44,7 @@
       </div>
     </el-main>
 
+    <!-- 客户售卖 footer -->
     <el-footer>
       <div>
         <el-tabs v-model="activeName" @tab-click="handleClick">
@@ -56,6 +62,7 @@
         </el-tabs>
       </div>
     </el-footer>
+
   </el-container>
 </template>
 
