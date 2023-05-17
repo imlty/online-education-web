@@ -1,0 +1,14 @@
+# 以 nginx:1.19.3 作为基础镜像构建镜像
+FROM nginx:1.19.3
+
+# 拷贝 npm run build 之后的产物文件到对应的 nginx 目录
+COPY dist/ /usr/share/nginx/html
+
+# 拷贝配置文件到对应的 nginx 目录
+COPY ./nginx/dev/default.conf /etc/nginx/conf.d/default.conf
+
+# 拷贝配置文件
+COPY ./nginx/dev/nginx.conf /etc/nginx/nginx.conf
+
+# 指定暴露容器端口 80
+EXPOSE 80
