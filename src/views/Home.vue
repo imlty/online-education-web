@@ -1,6 +1,10 @@
 <template>
   <el-container>
- 
+    <div :style="{ fontSize: count + 'em' }">
+      <hello-world v-for="item in dict" :key="item.id" :msg="item.title"   @enlarge-text="count += 0.1"/>
+    </div>
+    <!-- TODO: https://cn.vuejs.org/guide/essentials/component-basics.html#content-distribution-with-slots -->
+
     <!-- 头部 -->
     <el-header>
       <div>
@@ -53,7 +57,9 @@
                 gird 布局
         -->
             <div class="container">
-              <div style="background: black;" v-for="item in 100" :key="item">item-1</div>
+              <div style="background: black" v-for="item in 100" :key="item">
+                item-1
+              </div>
             </div>
           </el-tab-pane>
           <el-tab-pane label="SVIP" name="fourth">
@@ -62,12 +68,25 @@
         </el-tabs>
       </div>
     </el-footer>
-
   </el-container>
 </template>
 
 <script>
+import HelloWorld from "../components/HelloWorld.vue";
+import ButtonCounter from "../components/HelloWorld.vue";
 export default {
+  components: {
+    HelloWorld,
+  },
+  data() {
+    return {
+      dict: [
+        { id: 1, title: "你好！" },
+        { id: 2, title: "我也好！" },
+      ],
+      count: 1,
+    };
+  },
   name: "Home",
   props: {
     options: [],
@@ -95,12 +114,12 @@ thead td {
 }
 
 .container {
-    display: grid;
-    /* grid-template-columns: 250px 250px 250px 250px 250px;
+  display: grid;
+  /* grid-template-columns: 250px 250px 250px 250px 250px;
      */
-     grid-template-columns: repeat(5, 20%);
-    grid-template-rows: 250px 250px 250px;
-    grid-gap: 10px;
-    /* grid-template-rows: repeat(5,20%); */
+  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: 250px 250px 250px;
+  grid-gap: 10px;
+  /* grid-template-rows: repeat(5,20%); */
 }
 </style>
