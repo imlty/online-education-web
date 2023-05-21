@@ -1,8 +1,5 @@
 <template>
   <el-container>
-    <div :style="{ fontSize: count + 'em' }">
-      <hello-world v-for="item in dict" :key="item.id" :msg="item.title"   @enlarge-text="count += 0.1"/>
-    </div>
     <!-- TODO: https://cn.vuejs.org/guide/essentials/component-basics.html#content-distribution-with-slots -->
 
     <!-- 头部 -->
@@ -51,19 +48,11 @@
     <!-- 客户售卖 footer -->
     <el-footer>
       <div>
+        <!-- Tab 界面 -->
         <el-tabs v-model="activeName" @tab-click="handleClick">
-          <el-tab-pane label="VIP" name="first">
-            <!-- TODO:https://zhuanlan.zhihu.com/p/487624607
-                gird 布局
-        -->
-            <div class="container">
-              <div style="background: black" v-for="item in 100" :key="item">
-                item-1
-              </div>
-            </div>
-          </el-tab-pane>
-          <el-tab-pane label="SVIP" name="fourth">
-            <div></div>
+          <el-tab-pane v-for="tabKey in tabs" :key="tabKey" :label="tabKey">
+            <!-- 课程信息 -->
+            <course></course>
           </el-tab-pane>
         </el-tabs>
       </div>
@@ -73,29 +62,22 @@
 
 <script>
 import HelloWorld from "../components/HelloWorld.vue";
-import ButtonCounter from "../components/HelloWorld.vue";
+import Course from "@/components/course/Course.vue";
 export default {
   components: {
     HelloWorld,
+    Course,
   },
   data() {
     return {
-      dict: [
-        { id: 1, title: "你好！" },
-        { id: 2, title: "我也好！" },
-      ],
-      count: 1,
+      tabs: ["VIP", "SVIP"],
     };
   },
   name: "Home",
   props: {
     options: [],
   },
-  methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
-    },
-  },
+  methods: {},
 };
 </script>
 <style scoped>
@@ -111,15 +93,5 @@ thead tr {
 thead td {
   width: 100px;
   height: 20px;
-}
-
-.container {
-  display: grid;
-  /* grid-template-columns: 250px 250px 250px 250px 250px;
-     */
-  grid-template-columns: repeat(5, 20%);
-  grid-template-rows: 250px 250px 250px;
-  grid-gap: 10px;
-  /* grid-template-rows: repeat(5,20%); */
 }
 </style>
