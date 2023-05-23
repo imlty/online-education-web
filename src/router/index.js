@@ -27,6 +27,10 @@ const routes = [
     path: "/VIP",
     component: () => import("../views/VIP/index.vue"),
   },
+  {
+    path: "/login",
+    component: () => import("../views/login/index.vue"),
+  },
 ];
 const router = createRouter({
   routes: routes,
